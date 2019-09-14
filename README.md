@@ -20,12 +20,15 @@ Clone this repository:
   
 # Endpoints
   1. `/calls/ Methods = ('POST', 'GET')`
-  2. `/calls/mean/<> Methods = ('GET)`
+  2. `POST /calls/upload/ Methods = ('POST')`
+  3. `/calls/mean/<> Methods = ('GET')`
   
 # Examples
 ## `GET /calls/`
-  1. `curl http://127.0.0.1:5000/calls/`
+  1. `curl http://127.0.0.1:5000/calls/` returns one sample
 ## `POST /calls/`
-  1. `curl -d '{"key1":"value1", "key2":"value2"}' -H "Content-Type: application/json" -X POST http://127.0.0.1:5000/calls/`
+  1. `curl -d '{"uuid":"1"}' -H "Content-Type: application/json" -X POST http://127.0.0.1:5000/calls/` inserts a single sample
+## `POST /calls/upload/`
+  1. `curl -F "file=@JDS_Sample-phone_20140401_small.json" http://127.0.0.1:5000/calls/upload` bulk inserts json from file
 ## `GET /calls/mean/<>`
 
