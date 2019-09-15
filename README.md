@@ -4,12 +4,12 @@ The service has an endpoint to accept JSON data, which holds information on a si
 
 # Setup
 Clone this repository:
-`git clone https://github....`
+`git clone https://github.com/dnguyen22/ClickFox.git`
 
 # Dependencies
   1. Install [MongoDB](https://docs.mongodb.com/manual/installation/)
   2. Start MongoDB on port 27017 with `sudo service mongod start`.
-  3. Create a MongoDB database called `clickfox_app` with `use clickfox_app`.
+  3. Create a MongoDB database called `clickfox_app` with command `use clickfox_app`.
   4. Create a collection in the `clickfox_app` database called `calls`.
 
 # Running the code
@@ -30,5 +30,7 @@ Clone this repository:
   1. `curl -d '{"uuid":"1"}' -H "Content-Type: application/json" -X POST http://127.0.0.1:5000/calls/` inserts a single sample
 ## `POST /calls/upload/`
   1. `curl -F "file=@JDS_Sample-phone_20140401_small.json" http://127.0.0.1:5000/calls/upload` bulk inserts json from file
-## `GET /calls/mean/<>`
-
+  2. Check table using `db.calls.count()` and `db.calls.drop()`
+## `GET /calls/mean/<attribute>?limit=5`
+  1. `curl http://127.0.0.1:5000/calls/mean/session_duration?limit=5` returns mean of session duration for 5 samples
+  2. `curl http://127.0.0.1:5000/calls/mean/session_duration?visitor_key=400de9585caeed4e489e551f90bbc2d2` returns mean of session duration filtered on visitor_key

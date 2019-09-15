@@ -20,3 +20,7 @@ class DB(object):
     @staticmethod
     def find_one(collection, query):
         return DB.DATABASE[collection].find_one(query)
+
+    @staticmethod
+    def find(collection, query, projection=None, limit=0):
+        return DB.DATABASE[collection].find(query, projection=projection, limit=limit)
